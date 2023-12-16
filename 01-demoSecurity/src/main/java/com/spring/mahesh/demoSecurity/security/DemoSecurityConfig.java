@@ -36,8 +36,8 @@ public class DemoSecurityConfig {
         http.authorizeHttpRequests(configurer->
                 configurer.anyRequest().authenticated()).
                 formLogin(form->form
-                        .loginPage("/showMyLoginPage")
-                        .loginProcessingUrl("/authenticateTheUser")
+                        .loginPage("/showMyLoginPage") //The parameter will navigate the page tpo the corresponding method on controller
+                        .loginProcessingUrl("/authenticateTheUser")  //This parameter is spring inbuilt should be same
                         .permitAll());
         return http.build();
     }
