@@ -43,7 +43,7 @@ public class DemoSecurityConfig {
                         .loginPage("/showMyLoginPage") //The parameter will navigate the page tpo the corresponding method on controller
                         .loginProcessingUrl("/authenticateTheUser")  //This parameter is spring inbuilt should be same
                         .permitAll())
-                .logout(logout-> logout.permitAll());
+                .logout(logout-> logout.permitAll()).exceptionHandling(configurer->configurer.accessDeniedPage("/access-denied"));
         return http.build();
     }
 }
