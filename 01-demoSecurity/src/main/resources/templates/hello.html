@@ -13,15 +13,21 @@
     <br><br>
     Role(s): <span sec:authentication="principal.authorities"></span>
 </p>
+<div sec:authorize="hasRole('MANAGER')">
 <p>
 
     <a th:href="@{/leaders}">Leadership Meeting</a>
 </p>
+</div>
 <br><br>
+
+<div sec:authorize="hasRole('ADMIN')">
+
 <p>
 
     <a th:href="@{/systems}">Amdin Meeting</a>
 </p>
+</div>
 <form action="#" th:action="@{/logout}" method="post">
 
     <input type="submit" value="Logout"/>
