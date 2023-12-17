@@ -34,11 +34,16 @@ public class DemoSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(configurer->
-                configurer.anyRequest().authenticated()).
+                configurer.requestMatchers("/").hasRole("EMPLOYEE").
+                        requestMatchers("/leaders/**").hasRole("MANAGER").
+                       requestMatchers("/systems/**").hasRole("ADMIN").
+
+                        anyRequest().authenticated()).
                 formLogin(form->form
                         .loginPage("/showMyLoginPage") //The parameter will navigate the page tpo the corresponding method on controller
                         .loginProcessingUrl("/authenticateTheUser")  //This parameter is spring inbuilt should be same
-                        .permitAll());
+                        .permitAll())
+                .logout(logout-> logout.permitAll());
         return http.build();
     }
 }

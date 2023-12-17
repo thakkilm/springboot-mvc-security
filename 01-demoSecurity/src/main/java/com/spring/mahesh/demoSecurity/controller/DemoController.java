@@ -10,5 +10,8 @@ public class DemoController {
     public String sayHello(){
         return "hello";
     }
-
+    @GetMapping("/leaders")
+    public String showLeaders(){
+        return "leaders";
+    }
 }

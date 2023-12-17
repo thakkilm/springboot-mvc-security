@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Spring Security Demo</title>
 </head>
 <body>
 <h3>Hello Mahesh</h3>
-Please work hard
+<p>
+    Please work hard</p>
+<p>
+    User: <span sec:authentication="principal.username"></span>
+    <br><br>
+    Role(s): <span sec:authentication="principal.authorities"></span>
+</p>
+<p>
+
+    <a th:href="@{/leaders}">Leadership Meeting</a>
+</p>
+<form action="#" th:action="@{/logout}" method="post">
+
+    <input type="submit" value="Logout"/>
+
+</form>
 </body>
 </html>
